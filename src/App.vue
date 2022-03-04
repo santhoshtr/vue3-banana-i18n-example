@@ -1,7 +1,7 @@
 <template>
   <main :lang="locale">
-    <div class="locale-selector">
-      <label for="locale">Locale </label>
+    <form>
+      <label for="locale">Locale</label>
       <select
         id="locale"
         v-model="locale"
@@ -16,15 +16,15 @@
           Hebrew
         </option>
       </select>
-    </div>
-    <div class="params">
-      <label for="count">Apples </label>
-      <input
-        id="count"
-        v-model="count"
-        type="number"
-      >
-    </div>
+      <div class="params">
+        <label for="count">Apples </label>
+        <input
+          id="count"
+          v-model="count"
+          type="number"
+        >
+      </div>
+    </form>
     <h1 v-i18n:hello_world="[count]" />
   </main>
 </template>
@@ -47,14 +47,16 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: sans-serif;
+main {
+ font-family: sans-serif;
   color: #2c3e50;
-  padding: 4em;
-  margin: auto;
+  margin: 2em auto;
+  max-width: 600px;
 }
 
-.locale-selector {
-  float: right;
+form {
+  display: flex;
+  flex-direction: row;
 }
+
 </style>

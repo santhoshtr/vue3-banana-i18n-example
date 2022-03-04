@@ -1,6 +1,6 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import i18nPlugin from "./plugins/i18n";
+import { createI18n } from 'vue-banana-i18n'
 
 const app = createApp(App);
 const messages = {
@@ -12,8 +12,10 @@ const messages = {
   }
 };
 
-app.use(i18nPlugin, {
+
+const i18nPlugin = createI18n({
   locale: "en",
   messages: messages
 });
+app.use(i18nPlugin);
 app.mount("#app");
