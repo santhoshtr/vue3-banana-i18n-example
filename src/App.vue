@@ -1,5 +1,8 @@
 <template>
   <main :lang="locale">
+    <h1>
+      {{ i18n.i18n('welcome') }}
+    </h1>
     <form>
       <label for="locale">Locale</label>
       <select
@@ -25,20 +28,24 @@
         >
       </div>
     </form>
-    <h1 v-i18n:hello_world="[count]" />
+    <h2 v-i18n:hello_world="[count]" />
   </main>
 </template>
 
 <script>
 import { inject, ref, watch } from "vue";
+import { useI18n } from 'vue-banana-i18n'
+
 export default {
   name: "App",
   setup() {
+    const i18n = useI18n();
     const locale = ref("en");
     const count = ref("3");
     const setLocale = inject("setLocale");
     watch(locale, (newLocale) => setLocale(newLocale));
     return {
+      i18n,
       locale,
       count,
     };
